@@ -125,7 +125,7 @@ set n_c 0
 foreach chain0 $chx {
 	foreach chain1 $chx {
 		if {$chain0 ne $chain1} {
-			set f [open bonds.dat a]
+			set f [open bond_files/bonds.dat a]
       # Loop through frames
 			for {set i 0} {$i < $nf} {incr i} {
 				progress_tick $n_c

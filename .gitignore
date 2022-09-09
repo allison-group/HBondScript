@@ -1,0 +1,6 @@
+/AMPs/
+/PI3K/
+/venv/
+*.pyc
+.DS_Store
+/.idea/
