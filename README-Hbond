@@ -1,0 +1,17 @@
+Create an index file named index.dat which lists the atom boundaries for each protein (atom and not residue)
+
+Make all python files executable
+chmod +x *.py
+
+The input .gro and .xtc file should only comprise the molecules of interest, so in my case it was Ras and PI3Kalpha
+
+Then run
+./master.py npt_protein_only.gro onlyprot_10000frames.xtc
+
+Choose "occ" option when the interactive window opens up via VMD if you want to calculate H-bond occupancy or "num" if you want visualize the all H-bonds w.r.t a specific residue
+
+If this doesn't work you can run  ./direct_vis.py  and repeat the previous step
+
+If you want sort the labels on the Y-axis residue wise run sort_order.py
+
+Save figure.
