@@ -1,4 +1,3 @@
-#!/opt/homebrew/bin/python3
 """
 Run cleanData.py to:
 - Read in the hbond data in bonds.dat

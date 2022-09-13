@@ -61,7 +61,7 @@ if {[lindex [split $str .] 1] eq "gro"} {
 mol addfile $traj waitfor all
 # Count number of frames and write to file
 set nf [molinfo top get numframes]
-exec echo $nf > frames.txt
+# exec echo $nf > frames.txt
 
 # If GROMACS...
 if {$gx_ eq 1} {
