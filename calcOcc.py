@@ -53,16 +53,6 @@ def calcOcc():
     # a non-zero value indicates the number of residues that have names > 3 characters (or instances of increments between residue numbers > 1)
     # JRA: deleting this chunk of code doesn't seem to affect the overall running of the program
     # and four-letter residue names don't seem to stop VMD analysing the hydrogen bonds (it still produces output...but may miss hbonds for any four-letter residues?)
-    #c = 0
-    #with open('temp_CA.pdb') as f:
-    #  for line in f:
-    #    c += 1
-    #    line = line.split('\n')[0].split(' ')[1]
-    #    if c == 1:
-    #			break
-    #if int(line) > 0:
-    #	raise ValueError('The structure is missing a residue -- or has improper residue names see vmd.log in working directory for more info.')
-
     # Read in the atom numbers (idx), residue numbers (res) and chain ID (chx)
     vals_idx = np.genfromtxt('temp.pdb',usecols=[1],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
     vals_res = np.genfromtxt('temp.pdb',usecols=[8],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
@@ -99,9 +89,6 @@ def calcOcc():
           rn1 , rn2 = vals_rname[np.where(vals_idx == d+1)[0][0]], vals_rname[np.where(vals_idx == a+1)[0][0]]
           an1 , an2 = vals_aname[np.where(vals_idx == d+1)[0][0]], vals_aname[np.where(vals_idx == a+1)[0][0]]
 
-          # JRA: Ashar commented out the line below
-                #def __init__(self,occ,frames,list_H,d,a,h,r1,c1,r2,c2):
-                # check current values of all_e
           flag = 0
           # if there are entries in all_e
           if len(all_e) > 1:

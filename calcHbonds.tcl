@@ -126,13 +126,13 @@ foreach chain0 $chx {
 	foreach chain1 $chx {
 		if {$chain0 ne $chain1} {
 			set f [open bond_files/bonds.dat a]
-      # Loop through frames
+            # Loop through frames
 			for {set i 0} {$i < $nf} {incr i} {
 				progress_tick $n_c
 				incr n_c
 				set ch0 [atomselect top "chain $chain0" frame $i]
 				set ch1 [atomselect top "chain $chain1" frame $i]
-        # Write hydrogen bonds between chain0 and chain1 to the file bonds.dat. Criteria are 3 A and 20 deg.
+                # Write hydrogen bonds between chain0 and chain1 to the file bonds.dat. Criteria are 3 A and 20 deg.
 				puts $f *Chain:$chain0-Chain:$chain1:frame_$i*[measure hbonds 3 20 $ch0 $ch1]
 				$ch0 delete
 				$ch1 delete
@@ -141,6 +141,3 @@ foreach chain0 $chx {
 		}
 	}
 }
-
-
-

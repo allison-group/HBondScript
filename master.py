@@ -24,12 +24,15 @@ if not os.path.exists(bond_files):
 # If there's a bonds.dat file from a previous iteration, delete it so we don't continue to append to it
 if os.path.exists(bond_files + '/bonds.dat'):
     os.remove(bond_files + '/bonds.dat')
-# If bonds0.parsed (created by cleanData.py) exists, delete it
-if os.path.exists(bond_files + '/bonds0.parsed'):
-    os.remove(bond_files + '/bonds0.parsed')
 # If bonds1.parsed (created by cleanData.py) exists, delete it
 if os.path.exists(bond_files + '/bonds1.parsed'):
     os.remove(bond_files + '/bonds1.parsed')
+if os.path.exists(bond_files + '/bonds.edges'):
+    os.remove(bond_files + '/bonds.edges')
+if os.path.exists(bond_files + '/bonds.info'):
+    os.remove(bond_files + '/bonds.info')
+if os.path.exists(bond_files + '/bonds.list'):
+    os.remove(bond_files + '/bonds.list')
 ######################################################################
 
 # Use VMD to run calcHbonds.tcl to:
