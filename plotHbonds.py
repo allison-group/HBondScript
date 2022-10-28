@@ -8,7 +8,7 @@ config = configparser.ConfigParser()
 config.sections()
 config.read('config.cfg')
 bond_files = config['PATH']['bond_files']
-frames = int(config['FRAME']['frames'])
+frames = int(config['SIMULATION']['nFrames'])
 
 
 def plotHbonds():

@@ -11,9 +11,11 @@ config.read('config.cfg')
 # Parameters
 vmd = config['DEFAULT']['vmd']
 view = config['DEFAULT']['view']
-structureFile = config['DEFAULT']['structureFile']
-trajectoryFile = config['DEFAULT']['trajectoryFile']
-
+structureFile = config['SIMULATION']['structureFile']
+trajectoryFile = config['SIMULATION']['trajectoryFile']
+nFrames = config['SIMULATION']['nFrames']
+HBondDist = config['HBONDS']['HBondDist']
+HBondAngle = config['HBONDS']['HBondAngle']
 bond_files = config['PATH']['bond_files']
 
 ##################################
@@ -41,7 +43,7 @@ if os.path.exists(bond_files + '/bonds.list'):
 # - assign the groups of atoms outlined in index.dat to chains
 # - write out the first frame of the trajectory as a PDB file (which adds chains if we're working with GROMACS output)
 # - loop through pairs of chains, calculate the hydrogen bonds, and append to bonds.dat
-os.system(vmd + ' -dispdev text -eofexit -args < calcHbonds.tcl ' + structureFile + ' ' + trajectoryFile)
+os.system(vmd + ' -dispdev text -eofexit -args < calcHbonds.tcl ' + structureFile + ' ' + trajectoryFile + ' ' + nFrames + ' ' + HBondDist + ' ' + HBondAngle)
 
 cleanData.cleanData()
 calcOcc.calcOcc()
