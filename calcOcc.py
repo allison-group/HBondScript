@@ -1,10 +1,10 @@
 """
 # Run calcOcc.py to:
 # - run structure_stats.tcl, which:
-#   - reads in temp.pdb (first frame in PDB format)
+#   - reads in firstFrame.pdb (first frame in PDB format)
 #   - checks for residue names > 3 characters
 #   - checks that residue numbers always increment by 1
-#   - writes a header line with the total number if bad residues (and bad increments) to temp_CA.pdb (rest is same as temp.pdb)
+#   - writes a header line with the total number if bad residues (and bad increments) to temp_CA.pdb (rest is same as firstFrame.pdb)
 #   - writes output to vmd.log (including any residue names to fix)
 # - writes the complaint written above to stdout but with less info
 # - reads in bonds1.parsed, sorts this data into a list of hbonds that in turn contains a list of the frames in which each hbond occurs
@@ -54,12 +54,12 @@ def calcOcc():
     # JRA: deleting this chunk of code doesn't seem to affect the overall running of the program
     # and four-letter residue names don't seem to stop VMD analysing the hydrogen bonds (it still produces output...but may miss hbonds for any four-letter residues?)
     # Read in the atom numbers (idx), residue numbers (res) and chain ID (chx)
-    vals_idx = np.genfromtxt('temp.pdb',usecols=[1],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
-    vals_res = np.genfromtxt('temp.pdb',usecols=[8],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
-    vals_chx = np.genfromtxt('temp.pdb',usecols=[7],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
+    vals_idx = np.genfromtxt('firstFrame.pdb',usecols=[1],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
+    vals_res = np.genfromtxt('firstFrame.pdb',usecols=[8],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
+    vals_chx = np.genfromtxt('firstFrame.pdb',usecols=[7],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
     # JRA: Added code to read in the residue names (rname) and atom names (aname)
-    vals_rname = np.genfromtxt('temp.pdb',usecols=[5],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
-    vals_aname = np.genfromtxt('temp.pdb',usecols=[3],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
+    vals_rname = np.genfromtxt('firstFrame.pdb',usecols=[5],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
+    vals_aname = np.genfromtxt('firstFrame.pdb',usecols=[3],dtype=None,skip_header=1,skip_footer=1,delimiter=[6,5,1,4,1,3,1,1,4,1,3,8,8,8,6,6,10,2,2],encoding=None)
     all_e = []
 
     # Import hbond info

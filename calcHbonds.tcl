@@ -65,6 +65,11 @@ if {[lindex [split $str .] 1] eq "gro"} {
 }
 # Load trajectory
 mol addfile $traj waitfor all
+#  Write the first frame of the trajectory to file in PDB format
+#  For PSF+DCD this just extracts a single frame, for GRO+XTC this has added chain IDs
+set sel [atomselect top "all and not waters and not ions" frame 0]
+$sel writepdb firstFrame.pdb
+$sel delete
 
 # If GROMACS...then there is no chain entry in the PDB, so we need to set them up
 if {$gx_ eq 1} {
